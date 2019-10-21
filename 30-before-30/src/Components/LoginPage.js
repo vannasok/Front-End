@@ -17,21 +17,25 @@ const LoginForm = ({ touched, errors, status }) => {
   return (
     <div className="login-form">
       <Form>
+        <label> Name: 
         <Field type="text" name="name" placeholder="Name" />
+        </label>
     
+        <label> Password: 
         <Field type="password" name="password" placeholder="Password" />
-        {touched.name && errors.name && (
+        {touched.name && errors.name && ( 
           <p className="error">{errors.name}</p>
         )}
+        </label>
 
-        <button>Login</button>
+        <button>Login</button>  {/* login button to send data to the server */}
       </Form>
     </div>
   );
 };
 
 const FormikLoginForm = withFormik({
-  mapPropsToValues({ name, password }) {
+  mapPropsToValues({ name, password }) { // make the props for the form
     return {
       name: name || "",
       password: password || ""
@@ -42,11 +46,12 @@ const FormikLoginForm = withFormik({
     password: Yup.string().required(),
   }),
 
-  handleSubmit(values, {setStatus}) { 
-    axios.post('https://reqres.in/api/users/', values) 
+  handleSubmit(values, {setStatus}) {  // setStatus is coming from formik
+    axios.post('https://reqres.in/api/users/', values)  // here is my axios call and my post so that the users can login after they press the login button :)
           .then(res => { setStatus(res.data); }) 
           .catch(err => console.log(err.response));
     }
 })(LoginForm);
-export default FormikLoginForm;
 console.log("This is the HOC", FormikLoginForm);
+
+export default FormikLoginForm;
