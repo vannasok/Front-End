@@ -16,6 +16,7 @@ const LoginForm = ({ touched, errors, status }) => {
 
   return (
     <div className="login-form">
+      <h1>Login Page</h1>
       <Form>
         <label> Name: 
         <Field type="text" name="name" placeholder="Name" />

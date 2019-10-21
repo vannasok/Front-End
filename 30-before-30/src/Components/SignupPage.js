@@ -16,6 +16,7 @@ const SignupForm = ({ touched, errors, status }) => {
 
   return (
     <div className="signup-form">
+        <h1>Signup Page</h1>
       <Form>
         <label> Name: 
         <Field type="text" name="name" placeholder="Name" />
