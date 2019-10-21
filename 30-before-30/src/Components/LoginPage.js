@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import axios from "axios";
+import api from "../utils/axiosWithAuth";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 
@@ -7,6 +7,8 @@ import * as Yup from "yup";
 
 const LoginForm = ({ touched, errors, status }) => {
   const [login, setLogin] = useState([])
+
+
   useEffect(() => {
     if (status) {
         setLogin([...login, status]); 
@@ -19,7 +21,7 @@ const LoginForm = ({ touched, errors, status }) => {
       <h1>Login Page</h1>
       <Form>
         <label> Name: 
-        <Field type="text" name="name" placeholder="Name" />
+        <Field type="text" name="username" placeholder="Username" />
         </label>
     
         <label> Password: 
@@ -29,16 +31,16 @@ const LoginForm = ({ touched, errors, status }) => {
         )}
         </label>
 
-        <button>Login</button>  {/* login button to send data to the server */}
+        <button type="submit" >Login</button>  {/* login button to send data to the server */}
       </Form>
     </div>
   );
 };
 
 const FormikLoginForm = withFormik({
-  mapPropsToValues({ name, password }) { // make the props for the form
+  mapPropsToValues({ username, password }) { // make the props for the form
     return {
-      name: name || "",
+      username: username || "",
       password: password || ""
     };
   },
@@ -48,7 +50,7 @@ const FormikLoginForm = withFormik({
   }),
 
   handleSubmit(values, {setStatus}) {  // setStatus is coming from formik
-    axios.post('https://reqres.in/api/users/', values)  // here is my axios call and my post so that the users can login after they press the "Login" button :)
+    api.post('/auth/login', {}, {auth: values})  // here is my axios call and my post so that the users can login after they press the "Login" button :)
           .then(res => { setStatus(res.data); }) 
           .catch(err => console.log(err.response));
     }
