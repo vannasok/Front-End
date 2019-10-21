@@ -52,7 +52,7 @@ const FormikSignupForm = withFormik({
   }),
 
   handleSubmit(values, {setStatus}) {  // setStatus is coming from formik
-    axios.post('https://reqres.in/api/users/', values)  // here is my axios call and my post so that the users can signup after they press the "Create Account" button :)
+    axios.post('/auth/register', values)  // here is my axios call and my post so that the users can signup after they press the "Create Account" button :)
           .then(res => { setStatus(res.data); }) 
           .catch(err => console.log(err.response));
     }
