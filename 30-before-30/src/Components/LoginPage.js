@@ -23,8 +23,8 @@ const LoginForm = ({ touched, errors, status }) => {
     
         <label> Password: 
         <Field type="password" name="password" placeholder="Password" />
-        {touched.name && errors.name && ( 
-          <p className="error">{errors.name}</p>
+        {touched.password && errors.password && ( 
+          <p className="error">{errors.password}</p>
         )}
         </label>
 
@@ -43,11 +43,11 @@ const FormikLoginForm = withFormik({
   },
 
   validationSchema: Yup.object().shape({
-    password: Yup.string().required(),
+    password: Yup.string().required()
   }),
 
   handleSubmit(values, {setStatus}) {  // setStatus is coming from formik
-    axios.post('https://reqres.in/api/users/', values)  // here is my axios call and my post so that the users can login after they press the login button :)
+    axios.post('https://reqres.in/api/users/', values)  // here is my axios call and my post so that the users can login after they press the "Login" button :)
           .then(res => { setStatus(res.data); }) 
           .catch(err => console.log(err.response));
     }
