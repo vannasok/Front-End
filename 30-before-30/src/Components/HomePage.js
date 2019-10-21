@@ -1,17 +1,17 @@
 import React from "react";
-import { AddTodo } from "./AddTodo";
+import FormikAddTodo from "./AddTodo";
 
 const HomePage = () => {
     return (
         <div>
-            <NavBar/>
+            {/* <NavBar/> */}
             <div className="container">
                 <div className="profile-contain">
-                    <ProfileBar/>
+                    {/* <ProfileBar/> */}
                 </div>
                 <div className="todo-contain">
-                    <AddTodo/>
-                    <TodoList/>
+                    <FormikAddTodo/>
+                    {/* <TodoList/> */}
                 </div>
             </div>
         </div>
