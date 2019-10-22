@@ -1,22 +1,15 @@
 import React from 'react';
-// import AddTodo from './AddTodo';
-// import ProfileBar from './ProfileBar';
-// import NavBar from './NavBar';
-// import TodoList from './TodoList';
+import FormikAddTodo from './AddTodo';
 
 const HomePage = () => {
    return (
       <div>
-         {/* <NavBar /> */}
-         {/* <div className='container'>
-            <div className='profile-contain'>
-               <ProfileBar />
-            </div>
+         <div className='container'>
+            <div className='profile-contain'></div>
             <div className='todo-contain'>
-               <AddTodo />
-               <TodoList />
+               <FormikAddTodo />
             </div>
-         </div> */}
+         </div>
       </div>
    );
 };

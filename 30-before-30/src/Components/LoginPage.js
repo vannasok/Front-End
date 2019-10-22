@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import api from '../utils/axiosWithAuth';
 import { withFormik, Form, Field } from 'formik';
 import * as Yup from 'yup';
+import './ComponentCSS/LoginPage.css';
 
 const LoginForm = ({ touched, errors, status }) => {
    const [login, setLogin] = useState([]);
@@ -9,6 +10,7 @@ const LoginForm = ({ touched, errors, status }) => {
    useEffect(() => {
       if (status) {
          setLogin([...login, status]);
+         const loggedIn = localStorage.setItem('loggedIn', 'user logged in');
       }
    }, [status]);
 

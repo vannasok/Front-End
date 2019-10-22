@@ -4,7 +4,6 @@ import { Switch, Route } from 'react-router-dom';
 import PrivateRoute from './PrivateRoute';
 import HomePage from './HomePage';
 import LoginPage from './LoginPage';
-// import FriendForm from './FriendForm';
 
 const AppRouter = () => {
    return (
@@ -16,6 +15,7 @@ const AppRouter = () => {
             {/* <PrivateRoute path='/' exact component={HomePage} />
             <PrivateRoute path='/add-friend' component={FriendForm} />
             <PrivateRoute path='/update-friend' component={FriendForm} /> */}
+
             <Route path='/signup' component={SignupForm} />
          </Switch>
       </>
