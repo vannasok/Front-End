@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react";
 import api from "../utils/axiosWithAuth";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
-
+import "./ComponentCSS/LoginPage.css";
 
 
 const LoginForm = ({ touched, errors, status }) => {
