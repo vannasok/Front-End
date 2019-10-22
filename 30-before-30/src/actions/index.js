@@ -34,7 +34,7 @@ export const getTodoList = () => {
    return dispatch => {
       dispatch({ type: GET_LISTS_START });
       axiosWithAuth()
-         .get('https://buildweek30before30.herokuapp.com/api')
+         .get(`/lists/${id}`)
          .then(res => dispatch({ type: GET_LISTS_SUCCESS, payload: res.data }))
          .catch(err =>
             dispatch({ type: GET_LISTS_FAIL, payload: err.response })
@@ -47,7 +47,7 @@ export const addNewTodo = newTodo => {
    return dispatch => {
       dispatch({ type: POST_LISTS_START });
       axiosWithAuth()
-         .post('', newTodo)
+         .post('/lists', newTodo)
          .then(res => dispatch({ type: POST_LISTS_SUCCESS, payload: res.data }))
          .catch(err =>
             dispatch({ type: POST_LISTS_FAIL, payload: err.response })
@@ -60,7 +60,7 @@ export const editTodo = editTodo => {
    return dispatch => {
       dispatch({ type: PUT_LISTS_START });
       axiosWithAuth()
-         .put(`${editTodo.id}`, editTodo)
+         .put(`/lists/${editTodo.id}`, editTodo)
          .then(res => dispatch({ type: PUT_LISTS_SUCCESS, payload: res.data }))
          .catch(err =>
             dispatch({ type: PUT_LISTS_FAIL, payload: err.response })
@@ -73,7 +73,7 @@ export const removeTodo = byeTodo => {
    return dispatch => {
       dispatch({ type: DELETE_LISTS_START });
       axiosWithAuth()
-         .delete(`${byeTodo.id}`)
+         .delete(`/lists/${byeTodo.id}`)
          .then(res =>
             dispatch({ type: DELETE_LISTS_SUCCESS, payload: res.data })
          )
